@@ -1,0 +1,4 @@
+jdk:
+  - openjdk17
+install:
+  - ./gradlew :shapeview:publishToMavenLocal -PVERSION_NAME=$VERSION
