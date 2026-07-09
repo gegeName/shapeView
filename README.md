@@ -30,14 +30,14 @@ dependencyResolutionManagement {
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("com.github.<USER>.<REPO>:shapeview:<TAG>")
+    implementation("com.github.gegeName:shapeview:0.0.2")
 }
 ```
 
 如果仓库是 `gegeName/shapeview`，通常坐标为：
 
 ```kotlin
-implementation("com.github.gegeName.shapeview:shapeview:<TAG>")
+implementation("com.github.gegeName:shapeview:0.0.2")
 ```
 
 ## 支持控件
