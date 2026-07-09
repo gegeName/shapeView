@@ -179,6 +179,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="12dp"
+            android:text="Shape 1.8.1  图片圆角 / 圆形裁剪"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.chat.shapeview.ShapeImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                app:shape_radius_L="16dp"
+                app:shape_strokeColor_L="#E91E63"
+                app:shape_strokeSize_L="3dp" />
+
+            <com.chat.shapeview.ShapeImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                app:shape_bottomRightRadius_L="24dp"
+                app:shape_solidColor_L="#E3F2FD"
+                app:shape_strokeColor_L="#1565C0"
+                app:shape_strokeGradientCenterColor_L="#8E24AA"
+                app:shape_strokeGradientEndColor_L="#FF9800"
+                app:shape_strokeGradientOrientation_L="topLeftToBottomRight"
+                app:shape_strokeGradientStartColor_L="#1565C0"
+                app:shape_strokeSize_L="3dp"
+                app:shape_topLeftRadius_L="24dp" />
+
+            <com.chat.shapeview.ShapeImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                app:shape_circle_L="true"
+                app:shape_strokeColor_L="#2E7D32"
+                app:shape_strokeDashGap_L="4dp"
+                app:shape_strokeDashSize_L="8dp"
+                app:shape_strokeSize_L="3dp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
             android:textColor="@color/black"
             android:text="Shape 1.9  圆环 shape_L=3 + shape_innerRadiusRatio_L / shape_thicknessRatio_L"
             android:textStyle="bold" />

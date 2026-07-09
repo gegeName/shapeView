@@ -26,6 +26,7 @@ class ShapeDrawableBuilder(
 ) {
 
     private var shape: Int = GradientDrawable.RECTANGLE
+    private var circle: Boolean = false
     private var width: Int = -1
     private var height: Int = -1
 
@@ -78,6 +79,8 @@ class ShapeDrawableBuilder(
 
     init {
         readAttr(ta, R.attr.shape_L) { shape = ta.getInt(it, GradientDrawable.RECTANGLE) }
+        readAttr(ta, R.attr.shape_circle_L) { circle = ta.getBoolean(it, false) }
+        if (circle) shape = GradientDrawable.OVAL
         readAttr(ta, R.attr.shape_width_L) { width = ta.getDimensionPixelSize(it, -1) }
         readAttr(ta, R.attr.shape_height_L) { height = ta.getDimensionPixelSize(it, -1) }
 
@@ -370,5 +373,64 @@ class ShapeDrawableBuilder(
         solidGradientOrientation = orientation
     }
 
-    fun setShape(shapeType: Int) = apply { shape = shapeType }
+    fun setShape(shapeType: Int) = apply {
+        shape = shapeType
+        circle = false
+    }
+
+    fun setCircle(enable: Boolean) = apply {
+        circle = enable
+        if (enable) shape = GradientDrawable.OVAL
+    }
+
+    fun getShape(): Int = shape
+
+    fun isCircle(): Boolean = circle
+
+    fun getTopLeftRadius(): Float = if (topLeftRadius >= 0f) topLeftRadius else radius
+
+    fun getTopRightRadius(): Float = if (topRightRadius >= 0f) topRightRadius else radius
+
+    fun getBottomRightRadius(): Float = if (bottomRightRadius >= 0f) bottomRightRadius else radius
+
+    fun getBottomLeftRadius(): Float = if (bottomLeftRadius >= 0f) bottomLeftRadius else radius
+
+    fun getStrokeColor(): Int =
+        if (strokeGradientStartColor != 0 && strokeGradientEndColor != 0) {
+            strokeGradientStartColor
+        } else {
+            strokeColor
+        }
+
+    fun getStrokeColorForState(stateSet: IntArray): Int {
+        if (strokeGradientStartColor != 0 && strokeGradientEndColor != 0) {
+            return strokeGradientStartColor
+        }
+
+        return when {
+            !stateSet.contains(android.R.attr.state_enabled) -> strokeDisabledColor
+            stateSet.contains(android.R.attr.state_pressed) -> strokePressedColor
+            stateSet.contains(android.R.attr.state_checked) -> strokeCheckedColor
+            stateSet.contains(android.R.attr.state_selected) -> strokeSelectedColor
+            stateSet.contains(android.R.attr.state_focused) -> strokeFocusedColor
+            else -> strokeColor
+        }
+    }
+
+    fun getStrokeSize(): Float = strokeSize
+
+    fun getStrokeDashSize(): Float = strokeDashSize
+
+    fun getStrokeDashGap(): Float = strokeDashGap
+
+    fun hasStrokeGradient(): Boolean =
+        strokeGradientStartColor != 0 && strokeGradientEndColor != 0
+
+    fun getStrokeGradientStartColor(): Int = strokeGradientStartColor
+
+    fun getStrokeGradientCenterColor(): Int = strokeGradientCenterColor
+
+    fun getStrokeGradientEndColor(): Int = strokeGradientEndColor
+
+    fun getStrokeGradientOrientation(): Int = strokeGradientOrientation
 }

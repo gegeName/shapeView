@@ -18,7 +18,11 @@ internal object ShapePaddingManager {
 
     private val PADDING_ATTRS = intArrayOf(
         android.R.attr.padding,
+        android.R.attr.paddingHorizontal,
+        android.R.attr.paddingVertical,
+        android.R.attr.paddingLeft,
         android.R.attr.paddingStart,
+        android.R.attr.paddingRight,
         android.R.attr.paddingEnd,
         android.R.attr.paddingTop,
         android.R.attr.paddingBottom,
@@ -27,19 +31,25 @@ internal object ShapePaddingManager {
     @SuppressLint("ResourceType")
     fun applyDefaultZeroPadding(view: View, context: Context, attrs: AttributeSet?) {
         val ta = context.obtainStyledAttributes(attrs, PADDING_ATTRS)
-        val allPad     = ta.getDimensionPixelSize(0, -1)
-        val userStart  = ta.getDimensionPixelSize(1, -1)
-        val userEnd    = ta.getDimensionPixelSize(2, -1)
-        val userTop    = ta.getDimensionPixelSize(3, -1)
-        val userBottom = ta.getDimensionPixelSize(4, -1)
+        val allPad         = ta.getDimensionPixelSize(0, -1)
+        val horizontalPad  = ta.getDimensionPixelSize(1, -1)
+        val verticalPad    = ta.getDimensionPixelSize(2, -1)
+        val userLeft       = ta.getDimensionPixelSize(3, -1)
+        val userStart      = ta.getDimensionPixelSize(4, -1)
+        val userRight      = ta.getDimensionPixelSize(5, -1)
+        val userEnd        = ta.getDimensionPixelSize(6, -1)
+        val userTop        = ta.getDimensionPixelSize(7, -1)
+        val userBottom     = ta.getDimensionPixelSize(8, -1)
         ta.recycle()
 
         val base = if (allPad >= 0) allPad else 0
+        val horizontal = if (horizontalPad >= 0) horizontalPad else base
+        val vertical = if (verticalPad >= 0) verticalPad else base
         view.setPaddingRelative(
-            if (userStart  >= 0) userStart  else base,
-            if (userTop    >= 0) userTop    else base,
-            if (userEnd    >= 0) userEnd    else base,
-            if (userBottom >= 0) userBottom else base,
+            if (userStart >= 0) userStart else if (userLeft >= 0) userLeft else horizontal,
+            if (userTop >= 0) userTop else vertical,
+            if (userEnd >= 0) userEnd else if (userRight >= 0) userRight else horizontal,
+            if (userBottom >= 0) userBottom else vertical,
         )
     }
 }
