@@ -17,29 +17,29 @@ import android.view.View
 internal object ShapePaddingManager {
 
     private val PADDING_ATTRS = intArrayOf(
-        android.R.attr.padding,
-        android.R.attr.paddingHorizontal,
-        android.R.attr.paddingVertical,
-        android.R.attr.paddingLeft,
-        android.R.attr.paddingStart,
-        android.R.attr.paddingRight,
-        android.R.attr.paddingEnd,
-        android.R.attr.paddingTop,
-        android.R.attr.paddingBottom,
-    )
+            android.R.attr.padding,           // 0
+            android.R.attr.paddingLeft,       // 1
+            android.R.attr.paddingTop,        // 2
+            android.R.attr.paddingRight,      // 3
+            android.R.attr.paddingBottom,     // 4
+            android.R.attr.paddingStart,      // 5
+            android.R.attr.paddingEnd,        // 6
+            android.R.attr.paddingHorizontal, // 7
+            android.R.attr.paddingVertical,   // 8
+)
 
     @SuppressLint("ResourceType")
     fun applyDefaultZeroPadding(view: View, context: Context, attrs: AttributeSet?) {
         val ta = context.obtainStyledAttributes(attrs, PADDING_ATTRS)
-        val allPad         = ta.getDimensionPixelSize(0, -1)
-        val horizontalPad  = ta.getDimensionPixelSize(1, -1)
-        val verticalPad    = ta.getDimensionPixelSize(2, -1)
-        val userLeft       = ta.getDimensionPixelSize(3, -1)
-        val userStart      = ta.getDimensionPixelSize(4, -1)
-        val userRight      = ta.getDimensionPixelSize(5, -1)
-        val userEnd        = ta.getDimensionPixelSize(6, -1)
-        val userTop        = ta.getDimensionPixelSize(7, -1)
-        val userBottom     = ta.getDimensionPixelSize(8, -1)
+        val allPad        = ta.getDimensionPixelSize(0, -1)
+        val userLeft      = ta.getDimensionPixelSize(1, -1)
+        val userTop       = ta.getDimensionPixelSize(2, -1)
+        val userRight     = ta.getDimensionPixelSize(3, -1)
+        val userBottom    = ta.getDimensionPixelSize(4, -1)
+        val userStart     = ta.getDimensionPixelSize(5, -1)
+        val userEnd       = ta.getDimensionPixelSize(6, -1)
+        val horizontalPad = ta.getDimensionPixelSize(7, -1)
+        val verticalPad   = ta.getDimensionPixelSize(8, -1)
         ta.recycle()
 
         val base = if (allPad >= 0) allPad else 0
