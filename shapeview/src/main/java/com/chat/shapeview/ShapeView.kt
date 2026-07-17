@@ -6,7 +6,7 @@ import android.view.View
 import com.chat.shapeview.builder.ShadowDrawableBuilder
 import com.chat.shapeview.builder.ShapeDrawableBuilder
 
-class ShapeView @JvmOverloads constructor(
+open class ShapeView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

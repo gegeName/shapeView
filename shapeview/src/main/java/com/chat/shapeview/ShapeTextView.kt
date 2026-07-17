@@ -6,7 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.chat.shapeview.builder.ShadowDrawableBuilder
 import com.chat.shapeview.builder.ShapeDrawableBuilder
 
-class ShapeTextView @JvmOverloads constructor(
+open class ShapeTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = android.R.attr.textViewStyle

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chat.shapeview.builder.ShadowDrawableBuilder
 import com.chat.shapeview.builder.ShapeDrawableBuilder
 
-class ShapeRecyclerView @JvmOverloads constructor(
+open class ShapeRecyclerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

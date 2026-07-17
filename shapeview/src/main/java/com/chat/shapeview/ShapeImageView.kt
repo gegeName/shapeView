@@ -14,7 +14,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import com.chat.shapeview.builder.ShadowDrawableBuilder
 import com.chat.shapeview.builder.ShapeDrawableBuilder
 
-class ShapeImageView @JvmOverloads constructor(
+open class ShapeImageView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

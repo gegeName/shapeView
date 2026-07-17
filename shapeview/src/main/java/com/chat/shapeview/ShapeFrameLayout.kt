@@ -6,7 +6,7 @@ import android.widget.FrameLayout
 import com.chat.shapeview.builder.ShadowDrawableBuilder
 import com.chat.shapeview.builder.ShapeDrawableBuilder
 
-class ShapeFrameLayout @JvmOverloads constructor(
+open class ShapeFrameLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
